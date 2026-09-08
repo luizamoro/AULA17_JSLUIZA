@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+
+    <script>
+        class Livro {
+            constructor(titulo, autor) {
+                this.titulo = titulo;
+                this.autor = autor;
+                this.disponivel = true;
+            }
+
+            emprestar() {
+                if (this.disponivel) {
+                    this.disponivel = false;
+                    console.log(`${this.titulo} foi emprestado.`);
+                } else {
+                    console.log(`${this.titulo} já está emprestado.`);
+                }
+            }
+
+            devolver() {
+                this.disponivel = true;
+                console.log(`${this.titulo} foi devolvido.`);
+            }
+        }
+
+        class Biblioteca {
+            constructor() {
+                this.acervo = [];
+            }
+
+            adicionarLivro(livro) {
+                this.acervo.push(livro);
+            }
+
+            listarDisponiveis() {
+                console.log("Livros disponíveis:");
+
+                for (let livro of this.acervo) {
+                    if (livro.disponivel) {
+                        console.log(`${livro.titulo} - ${livro.autor}`);
+                    }
+                }
+            }
+        }
+
+        const livro1 = new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry");
+        const livro2 = new Livro("Harry Potter", "J.K. Rowling");
+        const livro3 = new Livro("Dom Casmurro", "Machado de Assis");
+
+        const biblioteca = new Biblioteca();
+
+        biblioteca.adicionarLivro(livro1);
+        biblioteca.adicionarLivro(livro2);
+        biblioteca.adicionarLivro(livro3);
+
+        livro1.emprestar();
+        livro1.emprestar();
+
+        biblioteca.listarDisponiveis();
+    </script>
+</head>
+
+<body>
+</body>
+</html>

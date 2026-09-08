@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido</title>
+
+    <script>
+        class Pedido {
+            constructor(numeroPedido) {
+                this.numeroPedido = numeroPedido;
+                this.itens = [];
+            }
+
+            adicionarItem(nome, preco) {
+                this.itens.push({
+                    nome: nome,
+                    preco: preco
+                });
+            }
+
+            calcularTotal() {
+                let total = 0;
+
+                for (let item of this.itens) {
+                    total += item.preco;
+                }
+
+                return total;
+            }
+
+            resumoPedido() {
+                console.log(`Pedido número: ${this.numeroPedido}`);
+
+                for (let item of this.itens) {
+                    console.log(`${item.nome} - R$${item.preco.toFixed(2)}`);
+                }
+
+                console.log(`Total: R$${this.calcularTotal().toFixed(2)}`);
+            }
+        }
+
+        const pedido = new Pedido(101);
+
+        pedido.adicionarItem("X-Burguer", 15);
+        pedido.adicionarItem("Batata Frita", 10);
+        pedido.adicionarItem("Refrigerante", 6);
+
+        pedido.resumoPedido();
+    </script>
+</head>
+
+<body>
+</body>
+</html>

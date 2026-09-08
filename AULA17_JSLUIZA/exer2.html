@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termostato</title>
+
+    <script>
+        class Termostato {
+            constructor(temperatura = 20) {
+                this.temperatura = temperatura;
+            }
+
+            aumentarTemp() {
+                if (this.temperatura < 35) {
+                    this.temperatura++;
+                } else {
+                    console.log("Temperatura máxima atingida: 35°C.");
+                }
+            }
+
+            diminuirTemp() {
+                if (this.temperatura > 10) {
+                    this.temperatura--;
+                } else {
+                    console.log("Temperatura mínima atingida: 10°C.");
+                }
+            }
+
+            status() {
+                console.log(`Temperatura atual: ${this.temperatura}°C`);
+            }
+        }
+
+        const termostato = new Termostato(20);
+
+        termostato.aumentarTemp();
+        termostato.aumentarTemp();
+        termostato.status();
+
+        termostato.diminuirTemp();
+        termostato.status();
+    </script>
+</head>
+
+<body>
+</body>
+</html>

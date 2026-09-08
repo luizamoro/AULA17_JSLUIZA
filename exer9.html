@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+
+    <script>
+        class Tarefa {
+            constructor(descricao) {
+                this.descricao = descricao;
+                this.concluida = false;
+            }
+
+            concluir() {
+                this.concluida = true;
+            }
+
+            reabrir() {
+                this.concluida = false;
+            }
+        }
+
+        class GerenciadorDeTarefas {
+            constructor() {
+                this.tarefas = [];
+            }
+
+            adicionarTarefa(descricao) {
+                const tarefa = new Tarefa(descricao);
+                this.tarefas.push(tarefa);
+            }
+
+            listarPendentes() {
+                console.log("Tarefas pendentes:");
+
+                for (let tarefa of this.tarefas) {
+                    if (!tarefa.concluida) {
+                        console.log(tarefa.descricao);
+                    }
+                }
+            }
+
+            obterEstatisticas() {
+                let concluidas = 0;
+
+                for (let tarefa of this.tarefas) {
+                    if (tarefa.concluida) {
+                        concluidas++;
+                    }
+                }
+
+                const total = this.tarefas.length;
+                const porcentagem = (concluidas / total) * 100;
+
+                console.log(`Total de tarefas: ${total}`);
+                console.log(`Tarefas concluídas: ${concluidas}`);
+                console.log(`${porcentagem}% das tarefas concluídas`);
+            }
+        }
+
+        const gerenciador = new GerenciadorDeTarefas();
+
+        gerenciador.adicionarTarefa("Fazer atividade de matemática");
+        gerenciador.adicionarTarefa("Estudar JavaScript");
+        gerenciador.adicionarTarefa("Fazer trabalho de Ciências");
+        gerenciador.adicionarTarefa("Organizar o material");
+
+        gerenciador.tarefas[0].concluir();
+        gerenciador.tarefas[1].concluir();
+
+        gerenciador.listarPendentes();
+        gerenciador.obterEstatisticas();
+    </script>
+</head>
+
+<body>
+</body>
+</html>

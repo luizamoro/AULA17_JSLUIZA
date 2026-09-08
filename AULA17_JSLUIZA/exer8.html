@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalha RPG</title>
+
+    <script>
+        class Personagem {
+            constructor(nome, vida = 100, ataque = 15) {
+                this.nome = nome;
+                this.vida = vida;
+                this.ataque = ataque;
+            }
+
+            atacar(alvo) {
+                if (this.vida <= 0) {
+                    console.log(`${this.nome} não pode atacar porque foi derrotado.`);
+                    return;
+                }
+
+                alvo.vida -= this.ataque;
+
+                if (alvo.vida <= 0) {
+                    alvo.vida = 0;
+                    console.log(`${alvo.nome} foi derrotado!`);
+                } else {
+                    console.log(`${this.nome} atacou ${alvo.nome}.`);
+                    console.log(`${alvo.nome} ficou com ${alvo.vida} de vida.`);
+                }
+            }
+        }
+
+        const guerreiro = new Personagem("Guerreiro", 100, 30);
+        const monstro = new Personagem("Monstro", 60, 15);
+
+        guerreiro.atacar(monstro);
+        guerreiro.atacar(monstro);
+        guerreiro.atacar(monstro);
+
+        monstro.atacar(guerreiro);
+    </script>
+</head>
+
+<body>
+</body>
+</html>

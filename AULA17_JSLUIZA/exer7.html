@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+
+    <script>
+        class Produto {
+            constructor(id, nome, preco, estoque) {
+                this.id = id;
+                this.nome = nome;
+                this.preco = preco;
+                this.estoque = estoque;
+            }
+        }
+
+        class Carrinho {
+            constructor() {
+                this.itens = [];
+            }
+
+            adicionarProduto(produto, quantidade) {
+                if (quantidade <= produto.estoque) {
+                    produto.estoque -= quantidade;
+
+                    this.itens.push({
+                        produto: produto,
+                        quantidade: quantidade
+                    });
+
+                    console.log(`${quantidade} unidade(s) de ${produto.nome} adicionada(s) ao carrinho.`);
+                } else {
+                    console.log(`Estoque insuficiente. Disponível: ${produto.estoque} unidade(s).`);
+                }
+            }
+        }
+
+        const produto1 = new Produto(1, "Teclado", 100, 10);
+        const produto2 = new Produto(2, "Mouse", 50, 5);
+
+        const carrinho = new Carrinho();
+
+        carrinho.adicionarProduto(produto1, 3);
+        carrinho.adicionarProduto(produto2, 10);
+
+        console.log(`Estoque restante do teclado: ${produto1.estoque}`);
+    </script>
+</head>
+
+<body>
+</body>
+</html>

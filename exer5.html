@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frota de Veículos</title>
+
+    <script>
+        class Carro {
+            constructor(marca, modelo, ano, preco) {
+                this.marca = marca;
+                this.modelo = modelo;
+                this.ano = ano;
+                this.preco = preco;
+            }
+        }
+
+        const frota = [
+            new Carro("Toyota", "Corolla", 2022, 120000),
+            new Carro("Volkswagen", "Golf", 2020, 95000),
+            new Carro("Chevrolet", "Onix", 2023, 85000),
+            new Carro("Fiat", "Argo", 2019, 65000),
+            new Carro("Honda", "Civic", 2021, 110000)
+        ];
+
+        function filtrarCarrosPorAno(frota, anoMinimo) {
+            return frota.filter(carro => carro.ano >= anoMinimo);
+        }
+
+        function calcularValorTotalFrota(frota) {
+            let total = 0;
+
+            for (let carro of frota) {
+                total += carro.preco;
+            }
+
+            return total;
+        }
+
+        const carrosNovos = filtrarCarrosPorAno(frota, 2021);
+
+        console.log("Carros a partir de 2021:");
+        console.log(carrosNovos);
+
+        console.log(`Valor total da frota: R$${calcularValorTotalFrota(frota)}`);
+    </script>
+</head>
+
+<body>
+</body>
+</html>
